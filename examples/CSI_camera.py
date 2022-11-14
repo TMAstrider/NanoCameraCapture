@@ -14,10 +14,14 @@ if __name__ == '__main__':
     # For multiple CSI camera
     # camera_2 = nano.Camera(device_id=1, flip=0, width=1280, height=800, fps=30)
     print('CSI Camera is now ready')
+    i =1
     while True:
         try:
             # read the camera image
             frame = camera.read()
+            i += 1
+            if i == 25:
+                cv2.imwrite("img.jpg", frame)
             # display the frame
             cv2.imshow("Video Frame", frame)
             if cv2.waitKey(25) & 0xFF == ord('q'):
